@@ -1,0 +1,20 @@
+Package: dav
+Type: Package
+Title: Data asset valuation methods
+Version: 1.0
+Date: 2022-06-09
+Authors@R:
+    c(person(given = "Donald",
+             family = "Seinen",
+             role = c("aut", "cre"),
+             email = "2869830202@qq.com",
+             comment = c(ORCID = "0000-0002-4343-5851"))
+  )
+Description: Value estimation of data assets.
+License: MIT + file LICENSE
+Encoding: UTF-8
+RoxygenNote: 7.2.0
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Roxygen: list(markdown = TRUE)
