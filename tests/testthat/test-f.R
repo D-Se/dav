@@ -1,7 +1,7 @@
 #### Equal ####
-test_that("f works", {
+test_that("template", {
   expect_equal(
-    f(),
+    1,
     1
   )
 })

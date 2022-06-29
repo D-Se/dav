@@ -20,3 +20,6 @@ Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)
 URL: https://github.com/D-Se/dav
 BugReports: https://github.com/D-Se/dav/issues
+Imports: 
+    readr (>= 2.1.2),
+    stringi (>= 1.7.6)
