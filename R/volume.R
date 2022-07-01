@@ -13,7 +13,8 @@
 ascii <- function(file) {
   # remove " , \r \n and null string from files
   remove <- as.raw(c(0x22, 0x2c, 0x0d, 0x0a, 0x00))
-  x <- readr::read_file_raw(file)
+  #x <- readr::read_file_raw(file)
+  x <- readBin(file, "raw", n = file.info(file)$size)
   x <- x[!x %in% remove] # sanitize csv, meaningfully compressible  part
   # total number of bytes in file
   total <- length(x)
@@ -36,7 +37,7 @@ guess_encoding <- function(data, language = "unknown") {
 
 
 compress <- function(file) {
-  fileext <- tail(strsplit(file, "\\.")[[1]], 1)
+  fileext <- grab_ext(file)
   # pre-compressed files
   avoid <- c(".png", ".jpg", ".mov", ".pdf", ".zip")
   tempfile("data", fileext = fileext)
@@ -44,4 +45,20 @@ compress <- function(file) {
   # get number of rows of data
   system("grep -c ^ testdata/iris.csv", intern = T) |> as.integer()
 }
+# 
+# s = c("test.test.csv", "test.csv", "test.pdf", "bla")
+# 
+# tools::file_ext(s)
 
+# grab_ext <- function(x) {
+#   # tools::file_ext and base::ifelse
+#   pos <- regexpr("\\.([[:alnum:]]+)$", x)
+#   y <- which(pos > -1L)
+#   n <- which(!pos > -1L)
+#   #ans <- x
+#   x[y] <- substring(x, pos + 1L)[y]
+#   x[n] <- ""
+#   x
+# }
+
+# grab_ext("test.zip")

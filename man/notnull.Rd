@@ -3,7 +3,7 @@
 \name{notnull}
 \alias{notnull}
 \alias{\%||\%}
-\title{null coaslescing operator}
+\title{null coalescing operator}
 \usage{
 x \%||\% y
 }
@@ -14,5 +14,5 @@ x \%||\% y
 LHS if true, RHS if LHS is NULL
 }
 \description{
-null coaslescing operator
+null coalescing operator
 }

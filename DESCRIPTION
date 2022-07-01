@@ -23,3 +23,5 @@ BugReports: https://github.com/D-Se/dav/issues
 Imports: 
     readr (>= 2.1.2),
     stringi (>= 1.7.6)
+Depends: 
+    R (>= 2.10)

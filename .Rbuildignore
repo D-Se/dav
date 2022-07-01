@@ -5,3 +5,4 @@
 
 cppcode
 testdata
+^data-raw$
