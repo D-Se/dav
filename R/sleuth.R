@@ -1,22 +1,37 @@
 #' investigate and document file metadata
 #' 
-#' \code{dav::sleuth} investigates the context in which data is valued.
+#' \code{dav::sleuth} investigates the context in which data is valued, and 
+#' lays the foundation for comparison of data assets based on a unified data 
+#' asset metadata schema.
 #' 
 #' @usage \special{dav::sleuth(file)}
 #' 
-#' @param file filepath
+#' @param asset a data asset. A \emph{filepath} or an R object.
 #' @return list of file metadata descriptors
 #' 
 #' @details 
-#' \code{sleuth} investigates and collects information on the \emph{thing\(s\)} to be
-#' valued and the \emph{system} on which it is evaluated.
-sleuth <- function(file) {
-  if(is.object(file)) {
-    # data set is in random access memory
+#' \code{sleuth} investigates and collects information on the \emph{thing\(s\)}
+#' to be valued and the \emph{system} on which it is evaluated. A comparison of 
+#' data.
+#' 
+#' filepaths are case sensitive.
+#' 
+#' @section Data semantics:
+#' An approximation of data value is limited by the ability to distinguish
+#' noise from data and the truthfulness of their content. In \code{sleuth} files
+#' are documented based on raw inputs and generally accepted practices.
+#' 
+#' @examples
+#' \dontrun{
+#' sleuth(iris)
+#' }
+sleuth <- function(asset) {
+  res <- vector(user = user_info(), asset = NULL)
+  if(is.character(asset) && file.exists(asset)) {
+    res$asset <- classify(asset)
+  } else {
+    # data asset is in random access memory
     return(0)
-  }
-  if(is.character(file) && file.exists(file)) {
-    type <- classify(file)
   }
 }
 
@@ -58,7 +73,6 @@ grab_ext <- function(x) {
   pos <- regexpr("\\.([[:alnum:]]+)$", x)
   y <- which(pos > -1L)
   n <- which(!pos > -1L)
-  #ans <- x
   x[y] <- substring(x, pos + 1L)[y]
   x[n] <- ""
   x

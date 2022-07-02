@@ -81,31 +81,6 @@ alias <- (function() {
 #ff <- ~ 2 * com + 2 * rel
 #alias(ff)
 
-init <- function(file) {
-  #readr::read_lines_raw("testdata/iris.csv")
-  data <- readr::read_file_raw(file)
-  OS <- .Platform$OS.type
-  
-  uninformative_glyphs <- switch(OS,
-                                 # \r\n = CR + LF → new line character in Windows
-                                 windows = c(0x0d, 0x0a),
-                                 # \r = CR (Carriage Return) new line character in Mac OS before X
-                                 # \n = LF (Line Feed) new line character in Unix/Mac OS X
-                                 unix = c(0x0d),
-                                 "unknown"
-  ) |> 
-    as.raw()
-  
-  list(
-    data = list(
-      bytes = length(data)
-    ),
-    user = list(
-      OS = OS
-    )
-  )
-}
-
 compute <- function(data, formula) {
   eval(alias(formula))
 }
