@@ -40,3 +40,6 @@ vignettes/*.pdf
 
 testdata/
 cppcode/
+
+NEWS.md
+CODE_OF_CONDUCT.md

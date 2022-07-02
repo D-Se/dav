@@ -6,6 +6,7 @@
 describe <- function(file) {
   if(is.object(file)) {
     # data set is in random access memory
+    return(0)
   }
   if(is.character(file) && file.exists(file)) {
     type <- classify(file)

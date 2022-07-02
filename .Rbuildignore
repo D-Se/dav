@@ -7,3 +7,4 @@ cppcode
 testdata
 ^data-raw$
 ^README\.Rmd$
+^CODE_OF_CONDUCT\.md$
