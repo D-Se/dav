@@ -16,8 +16,6 @@ dva <- function(..., formula) {
 
 dva.formula <- function(formula = NULL, ...) {
   x <- c(...)
-  ext <- grab_file_extension(x)
-  
   fml <- alias(formula)
   #tmp <- lapply(x, template)
   
@@ -28,21 +26,6 @@ dva.formula <- function(formula = NULL, ...) {
   #   ),
   #   class = "dva"
   # )
-}
-
-dva.default <- function(..., formula = NULL) {
-  x <- c(...)
-  grab_file_extension(x)
-}
-
-grab_file_extension <- function(x) { 
-  ext <- sub("^.*\\.(.+?)$", "\\1", x) |> tolower()
-  valid_ext <- ext[ext %in% c("csv", "xml", "json", "pdf")]
-  if(length(valid_ext) != length(ext)) {
-    W(1, setdiff(ext, valid_ext))
-  } else {
-    valid_ext
-  }
 }
 
 #files <- list("yes.csv", "yes.test.xml", "nope")

@@ -1,5 +1,5 @@
 
-# Calculate data cmpression ratio
+# Calculate data compression ratio
 
 #' Compute file entropy of an ASCII encoded file
 #' 
@@ -49,16 +49,5 @@ compress <- function(file) {
 # s = c("test.test.csv", "test.csv", "test.pdf", "bla")
 # 
 # tools::file_ext(s)
-
-# grab_ext <- function(x) {
-#   # tools::file_ext and base::ifelse
-#   pos <- regexpr("\\.([[:alnum:]]+)$", x)
-#   y <- which(pos > -1L)
-#   n <- which(!pos > -1L)
-#   #ans <- x
-#   x[y] <- substring(x, pos + 1L)[y]
-#   x[n] <- ""
-#   x
-# }
 
 # grab_ext("test.zip")
