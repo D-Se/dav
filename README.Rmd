@@ -1,0 +1,51 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+desc = read.dcf('DESCRIPTION')
+desc = setNames(as.list(desc), colnames(desc))
+```
+
+# `r desc$Package` <img src="man/figures/logo.png" align="right" alt="" width="120"/>
+
+> `r desc$Desc`
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+<!-- badges: end -->
+
+<div id='tldr'>
+
+* [Get started][]
+* [Documentation][]
+* [Frequently asked questions][FAQ]
+
+</div>
+
+## 📦 Installation
+
+The package is currently **under construction 🚧**. 
+
+``` r
+devtools::install_github("D-Se/dav")
+```
+## 
+`dav` implements methods for data asset valuation, a decomposition of trade value
+of data holdings.
+``` r
+# install.packages("devtools")
+devtools::install_github("D-Se/dav")
+```
+
+[Get started]: https://google.com
+[Documentation]: https://google.com
+[FAQ]: https://google.com

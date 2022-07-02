@@ -6,3 +6,4 @@
 cppcode
 testdata
 ^data-raw$
+^README\.Rmd$

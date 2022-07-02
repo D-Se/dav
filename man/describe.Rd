@@ -9,6 +9,9 @@ describe(file)
 \arguments{
 \item{file}{filepath}
 }
+\value{
+list of file metadata descriptors
+}
 \description{
 get a file description based on the file
 }

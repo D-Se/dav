@@ -1,7 +1,12 @@
 #' get a file description based on the file
 #' 
+#' 
 #' @param file filepath
+#' @return list of file metadata descriptors
 describe <- function(file) {
+  if(is.object(file)) {
+    # data set is in random access memory
+  }
   if(is.character(file) && file.exists(file)) {
     type <- classify(file)
   }
