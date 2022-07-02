@@ -1,6 +1,6 @@
 Package: dav
 Type: Package
-Title: Data asset valuation methods
+Title: Manage data as an asset
 Version: 1.0
 Date: 2022-06-09
 Authors@R:
@@ -10,7 +10,9 @@ Authors@R:
              email = "2869830202@qq.com",
              comment = c(ORCID = "0000-0002-4343-5851"))
   )
-Description: Value estimation of data assets.
+Description: A framework for the valuation and documentation of data assets.
+    Make informed decisions on how to store, format, document, maintain, develop,
+    data holdings based on domain-specific expert knowledge.
 License: MIT + file LICENSE
 Encoding: UTF-8
 RoxygenNote: 7.2.0
@@ -24,4 +26,4 @@ Imports:
     readr (>= 2.1.2),
     stringi (>= 1.7.6)
 Depends: 
-    R (>= 2.10)
+    R (>= 4.0)
