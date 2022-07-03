@@ -2,9 +2,9 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
-
 cppcode
 testdata
 ^data-raw$
 ^README\.Rmd$
 ^CODE_OF_CONDUCT\.md$
+^\.httr-oauth$

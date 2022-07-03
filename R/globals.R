@@ -16,3 +16,12 @@
 #' }
 #' @noRd
 utils::globalVariables("MIME")
+
+
+#' ASJC field
+#' 
+#' based on https://bartoc.org/en/node/20290
+#' @details 
+#' the All Science Journal Classification \(ASJC\) is 
+#' @noRd
+utils::globalVariables("ASJC")

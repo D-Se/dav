@@ -3,7 +3,9 @@
 
 # dav <img src="man/figures/logo.png" align="right" alt="" width="120"/>
 
-> Value estimation of data assets.
+> A framework for the valuation and documentation of data assets. Make
+> informed decisions on how to store, format, document, maintain,
+> develop, data holdings based on domain-specific expert knowledge.
 
 <!-- badges: start -->
 

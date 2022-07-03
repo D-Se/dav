@@ -1,8 +1,7 @@
 Package: dav
 Type: Package
 Title: Manage data as an asset
-Version: 1.0
-Date: 2022-06-09
+Version: 0.1
 Authors@R:
     c(person(given = "Donald",
              family = "Seinen",
@@ -14,16 +13,18 @@ Description: A framework for the valuation and documentation of data assets.
     Make informed decisions on how to store, format, document, maintain, develop,
     data holdings based on domain-specific expert knowledge.
 License: MIT + file LICENSE
-Encoding: UTF-8
-RoxygenNote: 7.2.0
-Suggests: 
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
-Roxygen: list(markdown = TRUE)
 URL: https://github.com/D-Se/dav
 BugReports: https://github.com/D-Se/dav/issues
 Imports: 
-    readr (>= 2.1.2),
     stringi (>= 1.7.6)
 Depends: 
     R (>= 4.0)
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Encoding: UTF-8
+RoxygenNote: 7.2.0
+Roxygen: list(markdown = TRUE)
+Config/testthat/edition: 3
