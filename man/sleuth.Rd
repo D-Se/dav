@@ -7,15 +7,32 @@
 \special{dav::sleuth(file)}
 }
 \arguments{
-\item{file}{filepath}
+\item{asset}{a data asset. A \emph{filepath} or an R object.}
 }
 \value{
 list of file metadata descriptors
 }
 \description{
-\code{dav::sleuth} investigates the context in which data is valued.
+\code{dav::sleuth} investigates the context in which data is valued, and
+lays the foundation for comparison of data assets based on a unified data
+asset metadata schema.
 }
 \details{
-\code{sleuth} investigates and collects information on the \emph{thing\(s\)} to be
-valued and the \emph{system} on which it is evaluated.
+\code{sleuth} investigates and collects information on the \emph{thing\(s\)}
+to be valued and the \emph{system} on which it is evaluated. A comparison of
+data.
+
+filepaths are case sensitive.
+}
+\section{Data semantics}{
+
+An approximation of data value is limited by the ability to distinguish
+noise from data and the truthfulness of their content. In \code{sleuth} files
+are documented based on raw inputs and generally accepted practices.
+}
+
+\examples{
+\dontrun{
+sleuth(iris)
+}
 }
