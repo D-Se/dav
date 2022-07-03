@@ -11,6 +11,8 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![Code
+size](https://img.shields.io/github/languages/code-size/D-Se/dav.svg)](https://github.com/D-Se/dav)
 <!-- badges: end -->
 
 <div id="tldr">
