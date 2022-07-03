@@ -25,8 +25,9 @@
 #' \dontrun{
 #' sleuth(iris)
 #' }
+#' @export
 sleuth <- function(asset) {
-  res <- vector(user = user_info(), asset = NULL)
+  res <- list(user = user_info(), asset = NULL)
   if(is.character(asset) && file.exists(asset)) {
     res$asset <- classify(asset)
   } else {
@@ -79,7 +80,7 @@ grab_ext <- function(x) {
 }
 
 grab_mime <- function(file) {
-  mime[["file"]]
+  MIME[["file"]]
 }
 
 grab_magic <- function(file) {
@@ -89,3 +90,4 @@ grab_magic <- function(file) {
   # reading trailing byte is problematic and slow
   # system(paste0("trail -n 2 ", file), intern = TRUE) |> charToRaw()
 }
+

@@ -1,0 +1,40 @@
+---
+title: "dav"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{dav}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(dav)
+```
+
+Data asset valuation is an emerging cross-discipline area of research that seeks
+to manage data as if they were intangible assets.
+
+## Methodology
+The value of a data asset is equal to the sum of the value of its smallest 
+meaningful attributes. For data these are collections of bits and the semantics
+that the beholder perceives.
+
+## Data value attributes
+<!--- insert list and description of DVA here --->
+
+## Limitations
+
+Ascribing an exact value to a set of data is currently impossible. Indeed, a 
+unified definition of what exactly are data, information and what their value 
+attributes are, is a disputed topic. To arrive at an informative approximation
+assumptions must be made.
+
+- the asset supplied contains (mostly) *truthful* relata
+- domain expert opinions are meaningful for the attributes to be valued
