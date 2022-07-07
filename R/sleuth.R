@@ -5,9 +5,10 @@
 #' asset metadata schema.
 #'
 #' @usage \special{dav::sleuth(file)}
+#' @usage \special{dav::sleuth(dir, pattern = ".csv")}
 #'
 #' @param asset a data asset. A \emph{filepath} or an R object.
-#' @param spec a formula that describes a model specification.
+#' @param \dots arguments passed from and to methods.
 #' @return list of file metadata descriptors
 #'
 #' @details
@@ -29,10 +30,11 @@
 #' @importFrom stats alias
 #' @importFrom utils osVersion
 #' @export
-sleuth <- function(asset) {
+sleuth <- function(asset, ...) {
   res <- list()
   if (is.asset(asset)) {
-    res$context <- context()
+    res$context <- sleuth_context()
+    res$asset <- sleuth_asset(asset)
     # asset is a file path
     #res$asset <- classify(asset)
   } else {
@@ -41,11 +43,48 @@ sleuth <- function(asset) {
   }
 }
 
-file_info <- function(file) {
-  # directory or single file?
-  !utils::file_test("-f", file)
-  info <- file.info(file, extra_cols = TRUE) |> as.list()
-  info
+#' get user and context
+#' 
+#' Several data attributes require detailed information on the who, what, where
+#' and when of data assets. Additionally to facilitate metric reproducibility,
+#' some hard- nd software specifications are \(temporarily\) gathered
+sleuth_context <- function() {
+  res <- unclass(R.version)
+  res$platform <- paste0(res$platform, " (",
+                         8 * .Machine$sizeof.pointer, "-bit)")
+  res <- res[c("platform", "version.string")]
+  res$os <- osVersion
+  # reproducibility of ANFIS states
+  res$RNG <- RNGkind()
+  # multi-byte character set in use?
+  res$time <- Sys.time() |> `attr<-`("tzone", "UTC")
+  # Latin-1 is ISO/IEC 8859-1
+  res$locale <- unlist(l10n_info())[1:3]
+  # res$software_versions <- extSoftVersion()[c(1, 2)]
+  res
+}
+
+#' find relevant information on the asset
+sleuth_asset <- function(asset) {
+  res <- list()
+  if(is.asset(asset)) {
+    res$type <- get_asset_type(asset)
+    res$info <- file_info(asset)
+  } else {
+    E("not_asset")
+  }
+}
+
+
+file_info <- function(asset, ...) {
+  if (!utils::file_test("-f", asset)) {
+    # asset is a single file
+    file.info(asset, extra_cols = TRUE) |> as.list()
+  } else {
+    # asset is a diretory
+    files <- list.files(asset, ...)
+    lapply(files, file_info, ...)
+  }
 }
 
 #' classify a given data asset
@@ -80,19 +119,50 @@ grab_magic <- function(file) {
   # system(paste0("trail -n 2 ", file), intern = TRUE) |> charToRaw()
 }
 
-#' get context on how the
-context <- function() {
-  res <- unclass(R.version)
-  res$platform <- paste0(res$platform, " (",
-                         8 * .Machine$sizeof.pointer, "-bit)")
-  res <- res[c("platform", "version.string")]
-  res$os <- osVersion
-  # reproducibility of ANFIS states
-  res$RNG <- RNGkind()
-  # multi-byte character set in use?
-  res$time <- Sys.time() |> `attr<-`("tzone", "UTC")
-  # Latin-1 is ISO/IEC 8859-1
-  res$locale <- unlist(l10n_info())[1:3]
-  # res$software_versions <- extSoftVersion()[c(1, 2)]
-  res
+get_asset_type <- function(x) {
+  switch(
+    typeof(x),
+    character = {
+      if (!utils::file_test(x)) "directory" else "file"
+    },
+    list = {
+      class <- class(x)
+      if (length(class) > 1L) {
+        if (inherits(x, "data.frame")) {
+          "data.frame"
+        } else {
+          "custom format"
+        }
+      } else { # actual list
+        if (vapply(x, function(t) any(class(t) == "list"), TRUE)) {
+          "nested list"
+        } else {
+          "singular list"
+        }
+      }
+    },
+    S4 = {
+      "S4"
+    },
+    E("file_type")
+  )
+}
+
+#' checking if R object or file is a trade-able data asset
+#' @param x R object or file path
+#' @param ... arguments passed to or from other methods
+#' @details
+#' a data asset is a collection of relata that carries semantic value in a
+#' context.
+#' @note \code{is.asset(x)} does not test if the asset is \emph{sensible}.
+#' @return boolean
+#' @export
+is.asset <- function(x, ...) {
+  # lgl, int, num, cmpl, chr
+  if (!is.atomic(x)) {
+    is.recursive(x) && !is.language(x)
+  } else {
+    # file path and readable
+    is.character(x) && file.access(x, 4L) == 0L
+  }
 }

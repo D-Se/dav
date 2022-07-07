@@ -9,6 +9,9 @@ expand_alias(spec)
 \arguments{
 \item{spec}{model specification}
 }
+\value{
+\strong{fml}: qualified model specification
+}
 \description{
 expand custom specification
 }

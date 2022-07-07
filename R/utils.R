@@ -4,63 +4,6 @@
 #' @return LHS if true, RHS if LHS is NULL
 `%||%` <- function(x, y) if (is.null(x)) y else x
 
-#' checking if R object or file is a trade-able data asset
-#' @param x R object or file path
-#' @param ... arguments passed to or from other methods
-#' @details
-#' a data asset is a collection of relata that carries semantic value in a
-#' context.
-#' @note \code{is.asset(x)} does not test if the asset is \emph{sensible}.
-#' @return boolean
-#' @export
-is.asset <- function(x, ...) {
-  # lgl, int, num, cmpl, chr
-  if (!is.atomic(x)) {
-    is.recursive(x) && !is.language(x)
-  } else {
-    # file path and readable
-    is.character(x) && file.access(x, 4L) == 0L
-  }
-}
-
-asset_type <- function(x) {
-  if (is.asset(x)) {
-    switch(
-      typeof(x),
-      character = {
-        if (!utils::file_test(x)) "directory" else "file"
-      },
-      list = {
-        class <- class(x)
-        if (length(class) > 1L) {
-          if (inherits(x, "data.frame")) {
-            "data.frame"
-          } else {
-            "custom format"
-          }
-        } else { # actual list
-          if (vapply(x, function(t) any(class(t) == "list"), TRUE)) {
-            "nested list"
-          } else {
-            "singular list"
-          }
-        }
-      },
-      S4 = {
-        "S4"
-      },
-      E("file_type")
-    )
-  } else {
-    E("not_asset")
-  }
-}
-
-is.asset <- function(x, ...) {
-  (is.character(x) && file.access(x, 4) == 0) ||
-    (!is.atomic(x) && is.object(x) && length(x) > 1L)
-}
-
 #' pretty console printing of package functions
 pretty <- function() {
   if (commandArgs()[[1L]] == "RStudio") {
@@ -81,6 +24,7 @@ eval_seeded <- function(expr) {
 
 #' expand custom specification
 #' @param spec model specification
+#' @return \strong{fml}: qualified model specification
 expand_alias <- (function() {
   fun_alias <- c(
     "com", "rel"

@@ -21,8 +21,8 @@ ascii <- function(file) {
   counts <- table(as.integer(x))
   # stackoverflow.com/questions/990477/how-to-calculate-the-entropy-of-a-file
   # base 256 to normalize 0-1 in bytes, not conventional base 2 for bits.
-  H <- -1 * sum(counts / total * log(counts / total, 256))
-  H
+  entropy <- -1 * sum(counts / total * log(counts / total, 256))
+  entropy
 }
 
 #' guess file encoding based on probability measures
@@ -45,9 +45,3 @@ compress <- function(file) {
   # get number of rows of data
   system("grep -c ^ testdata/iris.csv", intern = TRUE) |> as.integer()
 }
-#
-# s = c("test.test.csv", "test.csv", "test.pdf", "bla")
-#
-# tools::file_ext(s)
-
-# grab_ext("test.zip")

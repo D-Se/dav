@@ -43,34 +43,43 @@
 #'  To what degree the asset is whole
 #' }
 #' \item{\code{\var{Relevance}}:}{
+# TODO describe Relevance
 #'    placeholder description
 #' }
 #' \item{\code{\var{Integrity}}:}{
+# TODO describe Integrity
 #'    placeholder description
 #' }
 #' \item{\code{\var{Timeliness}}:}{
+# TODO describe accessibility
 #'    placeholder description
 #' }
 #' \item{\code{\var{Accessibility}}:}{
-# TODO redefine accessibility
+# TODO describe accessibility
 #'   easily and quickly retrievable
 #' }
 #' \item{\code{\var{Consistency}}:}{
+# TODO describe Consistency
 #'   placeholder description
 #' }
 #' \item{\code{\var{Ownership}}:}{
+# TODO describe Ownership
 #'    placeholder description
 #' }
 #' \item{\code{\var{Security}}:}{
+# TODO describe Security
 #'    placeholder description
 #' }
 #' \item{\code{\var{Sensitivity}}:}{
+# TODO describe Sensitivity
 #'    placeholder description
 #' }
 #' \item{\code{\var{Usability}}:}{
+# TODO describe Usability
 #'    placeholder description
 #' }
 #' \item{\code{\var{Volume}}:}{
+# TODO describe Volume
 #'    placeholder description
 #' }
 #' \item{\code{\var{Conciseness}}:}{
@@ -78,21 +87,26 @@
 #'   have redundant or repetitive non-informative content.
 #' }
 #' \item{\code{\var{Documentation}}:}{
+# TODO describe Documentation
 #'   Metadata on the management of the asset at hand.
 #' }
 #' \item{\code{\var{Encryption}}:}{
+# TODO describe Encryption
 #'   A path to directory or file
 #' }
 #' \item{\code{\var{Longevity}}:}{
+# TODO describe Longevity
 #'   A path to directory or file
 #' }
 #' \item{\code{\var{Scalability}}:}{
+# TODO describe Scalability
 #'   A path to directory or file
 #' }
 #' \item{\code{\var{Scarcity}}:}{
 #'   A path to directory or file
 #' }
 #' \item{\code{\var{Frequency}}:}{
+# TODO describe Frequency
 #'   A path to directory or file
 #' }
 #'
