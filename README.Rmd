@@ -11,8 +11,8 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
-desc = read.dcf('DESCRIPTION')
-desc = setNames(as.list(desc), colnames(desc))
+desc <- read.dcf("DESCRIPTION")
+desc <- setNames(as.list(desc), colnames(desc))
 ```
 
 # `r desc$Package` <img src="man/figures/logo.png" align="right" alt="" width="120"/>
@@ -34,7 +34,7 @@ desc = setNames(as.list(desc), colnames(desc))
 
 ## 📦 Installation
 
-The package is currently **under construction 🚧**. 
+The package is currently **under construction 🚧**. See the roadmap.
 
 ``` r
 devtools::install_github("D-Se/dav")

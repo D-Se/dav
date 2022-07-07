@@ -25,7 +25,7 @@ size](https://img.shields.io/github/languages/code-size/D-Se/dav.svg)](https://g
 
 ## 📦 Installation
 
-The package is currently **under construction 🚧**.
+The package is currently **under construction 🚧**. See the roadmap.
 
 ``` r
 devtools::install_github("D-Se/dav")
