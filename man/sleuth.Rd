@@ -8,6 +8,8 @@
 }
 \arguments{
 \item{asset}{a data asset. A \emph{filepath} or an R object.}
+
+\item{spec}{a formula that describes a model specification.}
 }
 \value{
 list of file metadata descriptors
