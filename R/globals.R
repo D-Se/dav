@@ -1,13 +1,13 @@
 #' package internal mime data
-#' 
+#'
 #' A hash table to identify media type of a data asset.
-#' 
-#' @details 
+#'
+#' @details
 #' A MIME (Multipurpose Internet Mail Extension) describes the nature and format
 #' of a document, file, or assortment of bytes. MIME types are defined and
 #' standardized in IETF's RFC 6838. The Internet Assigned Numbers Authority
 #' (IANA) is responsible for all official MIME types
-#' 
+#'
 #' @section MIME resources:
 #' \describe{
 #' \item{IANA official list}{
@@ -19,9 +19,11 @@ utils::globalVariables("MIME")
 
 
 #' ASJC field
-#' 
+#'
 #' based on https://bartoc.org/en/node/20290
-#' @details 
-#' the All Science Journal Classification \(ASJC\) is 
+#' @details
+#' the All Science Journal Classification \(ASJC\) is
 #' @noRd
 utils::globalVariables("ASJC")
+
+SEED <- 1L

@@ -1,72 +1,61 @@
 #' investigate and document file metadata
-#' 
-#' \code{dav::sleuth} investigates the context in which data is valued, and 
-#' lays the foundation for comparison of data assets based on a unified data 
+#'
+#' \code{dav::sleuth} investigates the context in which data is valued, and
+#' lays the foundation for comparison of data assets based on a unified data
 #' asset metadata schema.
-#' 
+#'
 #' @usage \special{dav::sleuth(file)}
-#' 
+#'
 #' @param asset a data asset. A \emph{filepath} or an R object.
+#' @param spec a formula that describes a model specification.
 #' @return list of file metadata descriptors
-#' 
-#' @details 
+#'
+#' @details
 #' \code{sleuth} investigates and collects information on the \emph{thing\(s\)}
-#' to be valued and the \emph{system} on which it is evaluated. A comparison of 
+#' to be valued and the \emph{system} on which it is evaluated. A comparison of
 #' data.
-#' 
+#'
 #' filepaths are case sensitive.
-#' 
+#'
 #' @section Data semantics:
 #' An approximation of data value is limited by the ability to distinguish
 #' noise from data and the truthfulness of their content. In \code{sleuth} files
 #' are documented based on raw inputs and generally accepted practices.
-#' 
+#'
 #' @examples
 #' \dontrun{
 #' sleuth(iris)
 #' }
+#' @importFrom stats alias
+#' @importFrom utils osVersion
 #' @export
 sleuth <- function(asset) {
-  res <- list(user = user_info(), asset = NULL)
-  if(is.character(asset) && file.exists(asset)) {
-    res$asset <- classify(asset)
+  res <- list()
+  if (is.asset(asset)) {
+    res$context <- context()
+    # asset is a file path
+    #res$asset <- classify(asset)
   } else {
     # data asset is in random access memory
     return(0)
   }
 }
 
-user_info <- function() {
-  list(
-    format = if(Sys.getenv("RSTUDIO") == "1") {
-      fmt = Sys.getenv(
-        c("RSTUDIO_CONSOLE_COLOR","RSTUDIO_CONSOLE_WIDTH"), names = FALSE
-      )
-      list(color = fmt[1L], width = fmt[2L])
-    } else NULL,
-    os = {
-      info = Sys.info()
-      c(
-        type = .Platform[["OS.type"]],
-        Sys.info()[c("sysname", "release", "version")] |> as.list()
-      )
-    },
-    system = .Machine,
-    software = list(
-      R = R.version.string
-    )
-    #hardware = benchmarkme::get_cpu()
-  )
-}
-
 file_info <- function(file) {
-  info = file.info(file, extra_cols = T) |> as.list()
+  # directory or single file?
+  !utils::file_test("-f", file)
+  info <- file.info(file, extra_cols = TRUE) |> as.list()
   info
 }
 
-classify <- function(file) {
-  ext <- grab_ext(file)
-  grab_mime(ext) %||% grab_magic(file) %||% ext
+#' classify a given data asset
+#'
+#' @param asset a data asset
+#'
+#' @return \strong{chr}: a platform and domain independent classification.
+classify <- function(asset) {
+  ext <- grab_ext(asset)
+  grab_mime(ext) %||% grab_magic(asset) %||% ext
 }
 
 grab_ext <- function(x) {
@@ -91,3 +80,19 @@ grab_magic <- function(file) {
   # system(paste0("trail -n 2 ", file), intern = TRUE) |> charToRaw()
 }
 
+#' get context on how the
+context <- function() {
+  res <- unclass(R.version)
+  res$platform <- paste0(res$platform, " (",
+                         8 * .Machine$sizeof.pointer, "-bit)")
+  res <- res[c("platform", "version.string")]
+  res$os <- osVersion
+  # reproducibility of ANFIS states
+  res$RNG <- RNGkind()
+  # multi-byte character set in use?
+  res$time <- Sys.time() |> `attr<-`("tzone", "UTC")
+  # Latin-1 is ISO/IEC 8859-1
+  res$locale <- unlist(l10n_info())[1:3]
+  # res$software_versions <- extSoftVersion()[c(1, 2)]
+  res
+}

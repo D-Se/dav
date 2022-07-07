@@ -114,5 +114,5 @@ A path to directory or file
 \seealso{
 \code{\link[=is.asset]{dav::is.asset}} \code{\link[=classify]{dav::classify}}
 give information about asset specification. \code{\link[=sleuth]{dav::sleuth}}
-aid in making the process reproducible across \R sessions.
+aid in making the process reproducible across sessions.
 }

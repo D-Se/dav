@@ -8,3 +8,5 @@ testdata
 ^README\.Rmd$
 ^CODE_OF_CONDUCT\.md$
 ^\.httr-oauth$
+
+wip

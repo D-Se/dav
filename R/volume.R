@@ -2,11 +2,11 @@
 # Calculate data compression ratio
 
 #' Compute file entropy of an ASCII encoded file
-#' 
+#'
 #' @param file path to file
 #' @return numeric length 1: the entropy of the file.
 #' @export
-#' @examples 
+#' @examples
 #' \dontrun{
 #' ascii("testdata/iris.csv")
 #' }
@@ -19,19 +19,19 @@ ascii <- function(file) {
   # total number of bytes in file
   total <- length(x)
   counts <- table(as.integer(x))
-  # https://stackoverflow.com/questions/990477/how-to-calculate-the-entropy-of-a-file
+  # stackoverflow.com/questions/990477/how-to-calculate-the-entropy-of-a-file
   # base 256 to normalize 0-1 in bytes, not conventional base 2 for bits.
-  H = -1*sum(counts / total * log(counts / total, 256))
+  H <- -1 * sum(counts / total * log(counts / total, 256))
   H
 }
 
 #' guess file encoding based on probability measures
-#' 
+#'
 #' @importFrom utils tail
 #' @noRd
 guess_encoding <- function(data, language = "unknown") {
   switch(language,
-         unknown = stringi::stri_enc_detect(data, T),
+         unknown = stringi::stri_enc_detect(data, TRUE),
          stringi::stri_enc_detect2(data, locale = NULL))
 }
 
@@ -41,13 +41,13 @@ compress <- function(file) {
   # pre-compressed files
   avoid <- c(".png", ".jpg", ".mov", ".pdf", ".zip")
   tempfile("data", fileext = fileext)
-  
+
   # get number of rows of data
-  system("grep -c ^ testdata/iris.csv", intern = T) |> as.integer()
+  system("grep -c ^ testdata/iris.csv", intern = TRUE) |> as.integer()
 }
-# 
+#
 # s = c("test.test.csv", "test.csv", "test.pdf", "bla")
-# 
+#
 # tools::file_ext(s)
 
 # grab_ext("test.zip")
