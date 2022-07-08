@@ -2,117 +2,100 @@
 % Please edit documentation in R/dva.R
 \name{dva}
 \alias{dva}
-\title{assess the value of data asset}
+\alias{dva.default}
+\alias{dva.formula}
+\title{Quantify the semantic value of data assets}
 \usage{
-\special{dav::dva(asset, spec, \dots)}
+dva(asset, spec, ...)
 
-\special{dav::dva(spec, asset, \dots)}
+\method{dva}{default}(asset, spec = ~test, ...)
+
+\method{dva}{formula}(spec = ~test, asset, ...)
 }
 \arguments{
-\item{asset}{\strong{list|chr}: the data asset to value. Can be a file path
-or an object.}
+\item{asset}{\code{lst}|\code{chr} Data asset(s) to value. Can be an \R object
+or file path.}
 
-\item{spec}{\strong{fml}: a valuation specification.}
+\item{spec}{\code{fml} a one-sided formula to specify data attributes.}
 
 \item{\dots}{arguments to pass to or from other methods.}
 }
 \value{
-list of length 3: a summary statistic, the method used and context of
-evaluation.
+a structure \code{dat} that contains:
+\item{value}{A numeric value.}
+\item{method}{A list containing the method of computation used.}
+\item{context}{A list containing a description of the asset, user and
+relevant software versions.}
 }
 \description{
-\code{dva} quantifies the semantic value of data assets.
+A data asset is a \dfn{managed set of relata of contextual semantic value}.
+Its numeric approximation, dubbed \code{dat}, uses expert opinions and
+indicators.
 }
 \details{
-A \emph{data asset} is a managed set of relata that carry contextual semantic
-value.
+\subsection{Defining data assets valuation}{
 
-The variable \var{asset} can refer to file locations or objects in memory.
-\describe{
-\item{\code{\var{asset}}:}{
-A collection of assets. \special{dva} supports list-like structures,
-specifically non-atomic classes where \code{is.recursive} is \code{TRUE}.
-}
-\item{\code{\var{filepath}}:}{
-A path to directory or file
-}
-}
-See the vignette at \code{vigenette('dva', 'dva')} for a detailed explanation
-of the assumptions, limitations of the package.
-}
-\section{Data asset valuation semantics}{
+A valuation of a data asset is an approximation of its perceived value
+under reasonable constraints. It is by no means an exact science.
+Definitions such as \emph{data}, \emph{information}, and \emph{file} carry different
+meanings in different contexts. Reasonable constraints such as
+assumptions and precision have to be placed.
 
-A valuation of a data asset is an approximation of its perceived value. It is
-by no means an exact science. Definitions of concepts such as \emph{data},
-\emph{file}, \emph{information} are contested.
-}
-
-\section{Data value attributes}{
-
-Non-divisible value drivers of data assets.
-
-\describe{
-\item{\code{\var{Completeness}}:}{
-To what degree the asset is whole
-}
-\item{\code{\var{Relevance}}:}{
-placeholder description
-}
-\item{\code{\var{Integrity}}:}{
-placeholder description
-}
-\item{\code{\var{Timeliness}}:}{
-placeholder description
-}
-\item{\code{\var{Accessibility}}:}{
-easily and quickly retrievable
-}
-\item{\code{\var{Consistency}}:}{
-placeholder description
-}
-\item{\code{\var{Ownership}}:}{
-placeholder description
-}
-\item{\code{\var{Security}}:}{
-placeholder description
-}
-\item{\code{\var{Sensitivity}}:}{
-placeholder description
-}
-\item{\code{\var{Usability}}:}{
-placeholder description
-}
-\item{\code{\var{Volume}}:}{
-placeholder description
-}
-\item{\code{\var{Conciseness}}:}{
-Compactness of data. Examples are compressed file or versus those that
-have redundant or repetitive non-informative content.
-}
-\item{\code{\var{Documentation}}:}{
-Metadata on the management of the asset at hand.
-}
-\item{\code{\var{Encryption}}:}{
-A path to directory or file
-}
-\item{\code{\var{Longevity}}:}{
-A path to directory or file
-}
-\item{\code{\var{Scalability}}:}{
-A path to directory or file
-}
-\item{\code{\var{Scarcity}}:}{
-A path to directory or file
-}
-\item{\code{\var{Frequency}}:}{
-A path to directory or file
-}
-
+A data \code{asset} can refer to file locations or objects in memory.
+\itemize{
+\item List-like structures, specifically non-atomic classes where
+\code{is.recursive} is \code{TRUE}. This includes data.frames, environments
+and structures built on them.
+\item File path: A path to directory or file where the user has at least
+read access.
 }
 }
 
+\subsection{Using data asset valuation}{
+
+For a detailed explanation of the assumptions, limitations of the
+package, refer to the \code{vignette("dva", "dva")}.
+}
+
+These are value-driving components in data asset valuation processes.
+
+\tabular{cc}{
+\strong{Concept} \tab \strong{Description}                                \cr
+Accessibility\tab  placeholder description of the attribute              \cr
+Accuracy     \tab  placeholder description of the attribute              \cr
+Clarity      \tab  placeholder description of the attribute              \cr
+Completeness \tab  placeholder description of the attribute              \cr
+Conciseness  \tab  placeholder description of the attribute              \cr
+Consistency  \tab  placeholder description of the attribute              \cr
+Documentation\tab  placeholder description of the attribute              \cr
+Encryption   \tab  placeholder description of the attribute              \cr
+Frequency    \tab  placeholder description of the attribute              \cr
+Integrity    \tab  placeholder description of the attribute              \cr
+Longevity    \tab  placeholder description of the attribute              \cr
+Objectivity  \tab  placeholder description of the attribute              \cr
+Ownership    \tab  placeholder description of the attribute              \cr
+Precision    \tab  placeholder description of the attribute              \cr
+Relevance    \tab  placeholder description of the attribute              \cr
+Scalability  \tab  placeholder description of the attribute              \cr
+Scarcity     \tab  placeholder description of the attribute              \cr
+Security     \tab  placeholder description of the attribute              \cr
+Sensitivity  \tab  placeholder description of the attribute              \cr
+Timeliness   \tab  placeholder description of the attribute              \cr
+Usability    \tab  placeholder description of the attribute              \cr
+Validity     \tab  placeholder description of the attribute              \cr
+Volume       \tab  placeholder description of the attribute              \cr
+}
+}
+\examples{
+\dontrun{
+   dva(iris)
+}
+}
 \seealso{
-\code{\link[=is.asset]{dav::is.asset}} \code{\link[=classify]{dav::classify}}
-give information about asset specification. \code{\link[=sleuth]{dav::sleuth}}
-aid in making the process reproducible across sessions.
+\code{\link[=classify]{classify}} and \code{\link[=is.asset]{is.asset}}
+give information about asset identification and categorization.
+\code{\link[=sleuth]{sleuth}} makes the computation process reproducible.
+}
+\author{
+Donald Seinen
 }

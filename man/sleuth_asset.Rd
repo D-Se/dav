@@ -2,10 +2,16 @@
 % Please edit documentation in R/sleuth.R
 \name{sleuth_asset}
 \alias{sleuth_asset}
-\title{find relevant information on the asset}
+\title{Find and organize the file context}
 \usage{
 sleuth_asset(asset)
 }
+\arguments{
+\item{asset}{data asset}
+}
+\value{
+\strong{lst} of documented file context
+}
 \description{
-find relevant information on the asset
+Find and organize the file context
 }

@@ -2,6 +2,7 @@
 #' @name notnull
 #' @param x,y a variable
 #' @return LHS if true, RHS if LHS is NULL
+#' @keywords internal
 `%||%` <- function(x, y) if (is.null(x)) y else x
 
 #' pretty console printing of package functions
@@ -11,8 +12,8 @@ pretty <- function() {
   }
 }
 
-#' reproducible r expressions that include randomness
-#'
+#' Reproducible R expressions that include randomness
+#' 
 #' @param expr exxpression to evaluate
 eval_seeded <- function(expr) {
   expr <- substitute(expr)
@@ -47,4 +48,10 @@ expand_alias <- (function() {
 
 eval_spec <- function(data, spec) {
   eval(expand_alias(spec))
+}
+
+#' introduce PR command for NEWS.md shortcuts
+Rd_expr_PR <- function(x) {
+  baseurl <- "https://github.com/D-Se/dav/issues"
+  sprintf("\\href{%s=%s}{PR#%s}", baseurl, x, x)
 }

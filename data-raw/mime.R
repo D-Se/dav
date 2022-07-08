@@ -352,4 +352,4 @@ mime <- list(
   zip = "application/zip", zip = "application/x-zip-compressed") |>
   list2env()
 
-usethis::use_data(mime, overwrite = TRUE)
+usethis::use_data(mime, overwrite = TRUE, internal = TRUE)

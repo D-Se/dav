@@ -4,33 +4,43 @@
 \alias{sleuth}
 \title{investigate and document file metadata}
 \usage{
-\special{dav::sleuth(file)}
+\special{sleuth(file)}
+
+\special{sleuth(dir, pattern = ".csv")}
 }
 \arguments{
 \item{asset}{a data asset. A \emph{filepath} or an R object.}
 
-\item{spec}{a formula that describes a model specification.}
+\item{\dots}{arguments passed from and to methods.}
 }
 \value{
 list of file metadata descriptors
 }
 \description{
-\code{dav::sleuth} investigates the context in which data is valued, and
-lays the foundation for comparison of data assets based on a unified data
-asset metadata schema.
+\code{sleuth} investigates the context in which data is valued. It lays the
+foundation for comparison of data assets and workflows via fuzzy
+inference systems.
 }
 \details{
 \code{sleuth} investigates and collects information on the \emph{thing\(s\)}
 to be valued and the \emph{system} on which it is evaluated. A comparison of
 data.
 
-filepaths are case sensitive.
+file paths are case sensitive.
 }
-\section{Data semantics}{
+\section{Data asset semantics}{
 
-An approximation of data value is limited by the ability to distinguish
-noise from data and the truthfulness of their content. In \code{sleuth} files
-are documented based on raw inputs and generally accepted practices.
+An approximation of data value is limited by the ability of the valuer to
+distinguish noise from data. \code{sleuth} documents possible sources
+of influence on the integrity of the valuation process. As the package is
+open source, sensitive information on the users are not collected.
+}
+
+\section{File classification}{
+
+What exactly is a file is operating system dependent. Inference on the
+structure of files is based on MIME \(Multipurpose Internet
+Mail Extensions\)
 }
 
 \examples{

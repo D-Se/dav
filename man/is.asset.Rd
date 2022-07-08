@@ -2,12 +2,12 @@
 % Please edit documentation in R/sleuth.R
 \name{is.asset}
 \alias{is.asset}
-\title{checking if R object or file is a trade-able data asset}
+\title{Data asset identity check}
 \usage{
 is.asset(x, ...)
 }
 \arguments{
-\item{x}{R object or file path}
+\item{x}{\R object or file path}
 
 \item{...}{arguments passed to or from other methods}
 }
@@ -15,12 +15,24 @@ is.asset(x, ...)
 boolean
 }
 \description{
-checking if R object or file is a trade-able data asset
+Check if object is sufficiently complex to carry possibly distinguishable
+semantic value. \code{is.asset} returns \code{TRUE} if the input is a
+list-like structure or a file path pointing to a valid file or directory.
 }
 \details{
-a data asset is a collection of relata that carries semantic value in a
-context.
+A data asset is a collection of relata that carries semantic value in a
+context. To avoid computability paradoxes constraints have to be placed on
+the definition. Atomic vectors carry little value on their own.
+
+Calls, expressions and code in general are certainly data assets, but
+methods have not yet been implemented to approximate their value, and thus
+return \code{FALSE} for now. Do not rely on this.
 }
 \note{
-\code{is.asset(x)} does not test if the asset is \emph{sensible}.
+\code{is.asset(x)} does only weakly check if the asset is
+\emph{sensible}.
+}
+\seealso{
+\link[base]{is.recursive} for list-like structures, \link[base]{is.language}
+for
 }

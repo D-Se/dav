@@ -1,0 +1,20 @@
+```{r startup, include = FALSE}
+options(cli.width = 70, width = 70, cli.unicode = FALSE)
+set.seed(123)
+```
+
+## Defining data assets valuation
+A valuation of a data asset is an approximation of its perceived value under
+reasonable constraints. It is by
+no means an exact science. Definitions such as *data*, *information*, and *file*
+carry different meanings in different contexts. Reasonable constraints such as
+assumptions and precision have to be placed.
+
+A data `asset` can refer to file locations or objects in memory.  
+
+- List-like structures, specifically non-atomic classes where `is.recursive` is `TRUE`. This includes data.frames, environments and structures built on them.  
+- File path: A path to directory or file where the user has at least read access.  
+
+## Using data asset valuation
+For a detailed explanation of the assumptions, limitations of the package, refer
+to the `vignette("dva", "dva")`.
