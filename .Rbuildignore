@@ -10,3 +10,5 @@ testdata
 ^\.httr-oauth$
 
 wip
+
+man-roxygen

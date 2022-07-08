@@ -3,6 +3,7 @@
 #' @param x,y a variable
 #' @return LHS if true, RHS if LHS is NULL
 #' @keywords internal
+#' @noRd
 `%||%` <- function(x, y) if (is.null(x)) y else x
 
 #' pretty console printing of package functions
@@ -15,11 +16,12 @@ pretty <- function() {
 #' Reproducible R expressions that include randomness
 #' 
 #' @param expr exxpression to evaluate
+#' @noRd
 eval_seeded <- function(expr) {
   expr <- substitute(expr)
   old <- .Random.seed
   on.exit(.Random.seed <<- old)
-  set.seed(SEED) # package seed
+  set.seed(dav_seed) # package seed specified in globals.R
   eval.parent(expr)
 }
 
@@ -51,6 +53,7 @@ eval_spec <- function(data, spec) {
 }
 
 #' introduce PR command for NEWS.md shortcuts
+#' @noRd
 Rd_expr_PR <- function(x) {
   baseurl <- "https://github.com/D-Se/dav/issues"
   sprintf("\\href{%s=%s}{PR#%s}", baseurl, x, x)

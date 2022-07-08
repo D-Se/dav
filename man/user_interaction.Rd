@@ -14,7 +14,7 @@ W(x, ...)
 M(x, ...)
 }
 \arguments{
-\item{x}{\tab \code{chr} - condition name}
+\item{x}{\code{chr} - condition name}
 
 \item{\dots}{further custom message specifications}
 }

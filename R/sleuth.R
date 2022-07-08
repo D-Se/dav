@@ -157,20 +157,20 @@ get_asset_type <- function(x) {
 #' 
 #' @description 
 #' Check if object is sufficiently complex to carry possibly distinguishable
-#' semantic value. \code{is.asset} returns \code{TRUE} if the input is a
-#' list-like structure or a file path pointing to a valid file or directory.
+#'   semantic value. \code{is.asset} returns \code{TRUE} if the input is a
+#'    list-like structure or a file path pointing to a valid file or directory.
 #' 
 #' @param x \R object or file path
 #' @param ... arguments passed to or from other methods
 #' 
 #' @details
 #' A data asset is a collection of relata that carries semantic value in a
-#' context. To avoid computability paradoxes constraints have to be placed on
-#' the definition. Atomic vectors carry little value on their own.
+#'    context. To avoid computability paradoxes constraints have to be placed on
+#'    the definition. Atomic vectors carry little value on their own.
 #' 
 #' Calls, expressions and code in general are certainly data assets, but
-#' methods have not yet been implemented to approximate their value, and thus
-#' return \code{FALSE} for now. Do not rely on this.
+#'    methods have not yet been implemented to approximate their value, and thus
+#'    return \code{FALSE} for now. Do not rely on this.
 #' 
 #' @note \code{is.asset(x)} does only weakly check if the asset is
 #'  \emph{sensible}.

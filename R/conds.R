@@ -5,8 +5,6 @@
 #' @param x `chr` - condition name
 #' @param \dots further custom message specifications
 #' 
-#' @details 
-#' 
 #' @keywords internal
 #' @name user_interaction
 E <- function(x, ...) {

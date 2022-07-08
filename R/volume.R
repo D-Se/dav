@@ -10,10 +10,9 @@
 #' \dontrun{
 #' ascii("testdata/iris.csv")
 #' }
-ascii <- function(file) {
+file_entropy <- function(file) {
   # remove " , \r \n and null string from files
   remove <- as.raw(c(0x22, 0x2c, 0x0d, 0x0a, 0x00))
-  #x <- readr::read_file_raw(file)
   x <- readBin(file, "raw", n = file.info(file)$size)
   x <- x[!x %in% remove] # sanitize csv, meaningfully compressible  part
   # total number of bytes in file

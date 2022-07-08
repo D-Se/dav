@@ -6,9 +6,9 @@
 #'
 #' @details
 #' A MIME (Multipurpose Internet Mail Extension) describes the nature and format
-#' of a document, file, or assortment of bytes. MIME types are defined and
-#' standardized in IETF's RFC 6838. The Internet Assigned Numbers Authority
-#' (IANA) is responsible for all official MIME types
+#'    of a document, file, or assortment of bytes. MIME types are defined and
+#'    standardized in IETF's RFC 6838. The Internet Assigned Numbers Authority
+#'    (IANA) is responsible for all official MIME types
 #'
 #' @keywords dataset
 #' @name mime
@@ -24,4 +24,4 @@ utils::globalVariables("mime")
 #' @name ASJC
 utils::globalVariables("ASJC")
 
-SEED <- 1L
+dav_seed <- 1L
