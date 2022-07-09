@@ -1,3 +1,6 @@
+# Functions to collect or infer the context of data assets and the means to
+# document them in a reproducible way.
+
 #' investigate and document file metadata
 #'
 #' \code{sleuth} investigates the context in which data is valued. It lays the
@@ -188,6 +191,11 @@ is.asset <- function(x, ...) {
     is.recursive(x) && !is.language(x) && !is.function(x)
   }
 }
+
+# TODO make a "document" file for
+# - making valuation processes reproducible
+# - saving findings
+# - file format interchange?
 
 #' Hash an \R object
 #'
