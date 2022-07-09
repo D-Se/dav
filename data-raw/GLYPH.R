@@ -3,7 +3,7 @@
 #' Different file types define offsets or formatting bytes that carry little
 #'    meaning. This list is a specification of such known noise-heavy values in
 #'    popular file formats and miscellaneous use cases, such as OS differences.
-#'    
+#'  
 #'
 #' @author Donald Seinen
 #' @keywords internal

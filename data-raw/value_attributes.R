@@ -42,9 +42,9 @@ dav_attributes_subj <- enframe(
   as.data.frame()
 
 #' Objective data asset value attriutes
-#' 
+#'
 #' Computable or inferable from a file or context.
-#' 
+#'
 #' @source Donald Seinen
 #' @keywords datasets
 dav_attributes_obj <- enframe(
@@ -58,11 +58,10 @@ dav_attributes_obj <- enframe(
   frequent,   fre, `A long description of the attribute here              `, 1,
   concise,    con, `A long description of the attribute here              `, 1,
   precise,    pre, `A long description of the attribute here              `, 1,
-  
+
   scalable,   sca, `A long description of the attribute here              `, 1
 ) |>
   matrix(ncol = 4, byrow = TRUE, dimnames = list(
     NULL, c("Attribute", "Abbreviation", "Description", "Publications"))
     ) |>
   as.data.frame()
-

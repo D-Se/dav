@@ -1,6 +1,6 @@
 #' package internal mime data
-#' 
-#' @description 
+#'
+#' @description
 #' A hash table to identify media type of a data asset. See
 #' \href{https://www.iana.org/assignments/media-types/media-types.xhtml}{mime}
 #'

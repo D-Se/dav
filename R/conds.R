@@ -4,7 +4,7 @@
 #'    or behavior.
 #' @param x `chr` - condition name
 #' @param \dots further custom message specifications
-#' 
+#'
 #' @keywords internal
 #' @name user_interaction
 E <- function(x, ...) {
@@ -20,7 +20,7 @@ E <- function(x, ...) {
     not_asset = "Input is not a data asset. To see supported see ?assets",
     # file type not in MIME list or identifiable by magic bytes
     file_type = "Unsupported file type.",
-    
+  
     #### Error: Dev Shortcoming ####
     "unknown error")
   stop(msg, call. = FALSE)
