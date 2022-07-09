@@ -5,4 +5,5 @@
 #' @docType package
 #' @name dav
 #' @author Donald Seinen
+#' @useDynLib dav, .registration=TRUE
 NULL

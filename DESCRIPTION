@@ -18,7 +18,7 @@ BugReports: https://github.com/D-Se/dav/issues
 Imports: 
     stringi (>= 1.7.6)
 Depends: 
-    R (>= 4.0)
+    R (>= 4.2)
 Suggests: 
     knitr,
     rmarkdown,

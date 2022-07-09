@@ -188,3 +188,28 @@ is.asset <- function(x, ...) {
     is.recursive(x) && !is.language(x) && !is.function(x)
   }
 }
+
+#' Hash an \R object
+#' 
+#' `dav` uses 64-bit xxh3 (v0.8.1) of Yann Collet's xxHash algorithm to
+#' represent known data asset valuations. Note that it is NOT cryptographic.
+#' 
+#' @usage 
+#' hash(asset, algorithm)
+#' 
+#' @param asset an \R object
+#' @param algorithm xxHash variant to compute.
+#' 
+#' @details
+#' xxHash is chosen for a few reasons. It is fast for input of any size. This 
+#' makes it suitable for assessing the value of small iterative-development
+#' of data assets, as well as provide a scalable way to assess large assets.
+#' Second, the collision rate is reasonable. 
+#' 
+#' @return `chr` an xxHash string of the asset.
+#' @seealso \code{\link[=serialize]{base::serialize}} for serializable \R
+#' objects.
+hash <- function(asset, algorithm = "xxh3") {
+  .Call("xxhash_", asset, algorithm)
+}
+
