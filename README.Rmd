@@ -15,13 +15,14 @@ desc <- read.dcf("DESCRIPTION")
 desc <- setNames(as.list(desc), colnames(desc))
 ```
 
-# `r desc$Package` <img src="man/figures/logo.png" align="right" alt="" width="120"/>
+# `r desc$Package` <img src="man/figures/logo.png" align="right" width="120"/>
 
 > `r desc$Desc`
 
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![Code size](https://img.shields.io/github/languages/code-size/D-Se/dav.svg)](https://github.com/D-Se/dav)
+
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) [![Code size](https://img.shields.io/github/languages/code-size/D-Se/dav.svg)](https://github.com/D-Se/dav) [![R-CMD-check](https://github.com/D-Se/dav/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/D-Se/dav/actions/workflows/R-CMD-check.yaml)
+
 <!-- badges: end -->
 
 <div id='tldr'>
@@ -32,21 +33,19 @@ desc <- setNames(as.list(desc), colnames(desc))
 
 </div>
 
-## 📦 Installation
+## :package: Installation
 
-The package is currently **under construction 🚧**. See the roadmap.
+The package is currently **under construction :construction:**. See the roadmap.
 
 ``` r
 devtools::install_github("D-Se/dav")
 ```
-## 
-`dav` implements methods for data asset valuation, a decomposition of trade value
-of data holdings.
-``` r
-# install.packages("devtools")
-devtools::install_github("D-Se/dav")
-```
 
-[Get started]: https://google.com
-[Documentation]: https://google.com
-[FAQ]: https://google.com
+## Usage
+
+Basic usage is to implement a valuation based on a specification.
+
+```
+dat(mtcars, ~ . + 2 * com)
+```
+Which reads as *value mtcars, using domain expert knowledge and a specific membership function*.
