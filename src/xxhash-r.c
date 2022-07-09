@@ -2,6 +2,7 @@
  * - R 4.2.0 dropped support for 32-bit builds 
  *  see (https://cran.r-project.org/doc/manuals/r-devel/NEWS.html)
  * 
+ * TODO: transform into Rcpp code
 */
 
 #include <R.h>

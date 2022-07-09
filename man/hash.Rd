@@ -16,13 +16,25 @@ hash(asset, algorithm)
 }
 \description{
 \code{dav} uses 64-bit xxh3 (v0.8.1) of Yann Collet's xxHash algorithm to
-represent known data asset valuations.
+represent known data asset valuations. Note that it is NOT cryptographic.
 }
 \details{
-xx
-Many hash algorithms exist.
+\subsection{xxHash rationale}{
 
-Note that it is NOT cryptographic.
+Data asset valuation needs reproducibility, transparency and reduction of
+computational overheads.
+
+In general, xxHash is a fast CPU and platform independent solution for
+arbitrary sized data. xxh3, the default, uses SIMD and 64-bit arithmetic
+that allows it to achieve near RAM sequential read speeds. The algorithm
+shows good speeds on small and large sets. This ensures that different
+sizes of data assets can be valued at different precision without becoming a
+bottleneck.
+
+The 64-bit version has a low collision rate that passes known benchmarks, and
+can be directly obtained from a 128-bit implementation, future proofing
+valuation processes as data holdings evole.
+}
 }
 \seealso{
 \code{\link[=serialize]{base::serialize}} for serializable \R

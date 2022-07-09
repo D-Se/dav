@@ -14,7 +14,7 @@ pretty <- function() {
 }
 
 #' Reproducible R expressions that include randomness
-#' 
+#'
 #' @param expr exxpression to evaluate
 #' @noRd
 eval_seeded <- function(expr) {

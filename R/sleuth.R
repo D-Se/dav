@@ -23,7 +23,7 @@
 #' distinguish noise from data. \code{sleuth} documents possible sources
 #' of influence on the integrity of the valuation process. As the package is
 #' open source, sensitive information on the users are not collected.
-#' 
+#'
 #' @section File classification:
 #' What exactly is a file is operating system dependent. Inference on the
 #' structure of files is based on MIME \(Multipurpose Internet
@@ -51,7 +51,7 @@ sleuth <- function(asset, ...) {
 }
 
 #' get user and context
-#' 
+#'
 #' Several data attributes require detailed information on the who, what, where
 #' and when of data assets. Additionally to facilitate metric reproducibility,
 #' some hard- nd software specifications are \(temporarily\) gathered
@@ -72,7 +72,7 @@ sleuth_context <- function() {
 }
 
 #' Find and organize the file context
-#' 
+#'
 #' @param asset data asset
 #' @return \strong{lst} of documented file context
 sleuth_asset <- function(asset) {
@@ -154,31 +154,31 @@ get_asset_type <- function(x) {
 }
 
 #' Data asset identity check
-#' 
-#' @description 
+#'
+#' @description
 #' Check if object is sufficiently complex to carry possibly distinguishable
 #'   semantic value. \code{is.asset} returns \code{TRUE} if the input is a
 #'    list-like structure or a file path pointing to a valid file or directory.
-#' 
+#'
 #' @param x \R object or file path
 #' @param ... arguments passed to or from other methods
-#' 
+#'
 #' @details
 #' A data asset is a collection of relata that carries semantic value in a
 #'    context. To avoid computability paradoxes constraints have to be placed on
 #'    the definition. Atomic vectors carry little value on their own.
-#' 
+#'
 #' Calls, expressions and code in general are certainly data assets, but
 #'    methods have not yet been implemented to approximate their value, and thus
 #'    return \code{FALSE} for now. Do not rely on this.
-#' 
+#'
 #' @note \code{is.asset(x)} does only weakly check if the asset is
 #'  \emph{sensible}.
 #' @return boolean
-#' 
-#' @seealso 
+#'
+#' @seealso
 #' \link[base]{is.recursive} for list-like structures, \link[base]{is.language}
-#' for 
+#' for
 #' @export
 is.asset <- function(x, ...) {
   if (is.atomic(x)) {
@@ -190,26 +190,35 @@ is.asset <- function(x, ...) {
 }
 
 #' Hash an \R object
-#' 
+#'
 #' `dav` uses 64-bit xxh3 (v0.8.1) of Yann Collet's xxHash algorithm to
 #' represent known data asset valuations. Note that it is NOT cryptographic.
-#' 
-#' @usage 
+#'
+#' @usage
 #' hash(asset, algorithm)
-#' 
+#'
 #' @param asset an \R object
 #' @param algorithm xxHash variant to compute.
-#' 
+#'
 #' @details
-#' xxHash is chosen for a few reasons. It is fast for input of any size. This 
-#' makes it suitable for assessing the value of small iterative-development
-#' of data assets, as well as provide a scalable way to assess large assets.
-#' Second, the collision rate is reasonable. 
-#' 
+#' ## xxHash rationale
+#' Data asset valuation needs reproducibility, transparency and reduction of
+#' computational overheads.
+#'
+#' In general, xxHash is a fast CPU and platform independent solution for
+#' arbitrary sized data. xxh3, the default, uses SIMD and 64-bit arithmetic
+#' that allows it to achieve near RAM sequential read speeds. The algorithm
+#' shows good speeds on small and large sets. This ensures that different
+#' sizes of data assets can be valued at different precision without becoming a
+#' bottleneck.
+#'
+#' The 64-bit version has a low collision rate that passes known benchmarks, and
+#' can be directly obtained from a 128-bit implementation, future proofing
+#' valuation processes as data holdings evole.
+#'
 #' @return `chr` an xxHash string of the asset.
 #' @seealso \code{\link[=serialize]{base::serialize}} for serializable \R
 #' objects.
 hash <- function(asset, algorithm = "xxh3") {
   .Call("xxhash_", asset, algorithm)
 }
-
