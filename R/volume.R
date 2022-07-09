@@ -5,7 +5,6 @@
 #'
 #' @param file path to file
 #' @return numeric length 1: the entropy of the file.
-#' @export
 #' @examples
 #' \dontrun{
 #' ascii("testdata/iris.csv")

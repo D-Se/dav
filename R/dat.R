@@ -9,7 +9,7 @@
 #' @param spec `fml` a one-sided formula to specify data attributes.
 #' @param \dots arguments to pass to or from other methods.
 #' 
-#' @includeRmd man/rmd/dva.Rmd details
+#' @includeRmd man/rmd/dat.Rmd details
 #' @template data_value_attributes
 #' @author Donald Seinen
 #' @seealso
@@ -23,25 +23,25 @@
 #'    \item{context}{A list containing a description of the asset, user and
 #'    relevant software versions.}
 #' 
-#' @aliases dva dva.default dva.formula
+#' @aliases dat dat.default dat.formula
 #' @export
 #' @examples
 #' \dontrun{
-#'    dva(iris)
+#'    dat(iris)
 #' }
-dva <- function(asset, spec, ...) {
-  UseMethod("dva")
+dat <- function(asset, spec, ...) {
+  UseMethod("dat")
 }
 
-#' @rdname dva
-dva.default <- function(asset, spec = ~ test, ...) {
+#' @rdname dat
+dat.default <- function(asset, spec = ~ test, ...) {
   res <- list()
   res$meta <- sleuth(asset)
   res$spec <- expand_alias(spec)
   structure(res, class = "dat")
 }
 
-#' @rdname dva
-dva.formula <- function(spec = ~ test, asset, ...) {
-  dva.default(asset, spec, ...)
+#' @rdname dat
+dat.formula <- function(spec = ~ test, asset, ...) {
+  dat.default(asset, spec, ...)
 }
