@@ -2,7 +2,7 @@ Package: dav
 Type: Package
 Title: Manage data as an asset
 Version: 0.1
-Authors@R:
+Authors@R: 
     c(person(given = "Donald",
              family = "Seinen",
              role = c("aut", "cre"),
@@ -22,7 +22,7 @@ Depends:
 Suggests: 
     knitr,
     rmarkdown,
-    testthat (>= 3.0.0)
+    tinytest
 VignetteBuilder: knitr
 Encoding: UTF-8
 RoxygenNote: 7.2.0
