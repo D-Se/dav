@@ -14,7 +14,6 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![Code
 size](https://img.shields.io/github/languages/code-size/D-Se/dav.svg)](https://github.com/D-Se/dav)
 [![R-CMD-check](https://github.com/D-Se/dav/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/D-Se/dav/actions/workflows/R-CMD-check.yaml)
-[![R-CMD-check](https://github.com/D-Se/dav/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/D-Se/dav/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 <div id="tldr">
