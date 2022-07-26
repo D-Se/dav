@@ -25,3 +25,28 @@ utils::globalVariables("mime")
 utils::globalVariables("ASJC")
 
 dav_seed <- 1L
+
+
+DVA_scholar <- list(
+  "accessibility", "accuracy", "clarity", "completeness",
+  "conciseness", "consistency", "documentation", "encryption",
+  "frequency", "integrity", "longevity", "objectivity",
+  "ownership", "precision", "relevance", "scarcity",
+  "timeliness", "usability", "validity", "volume"
+)
+DVA_business <- list(
+  "accessibility", "completeness", "conciseness", "consistency",
+  "documentation", "encryption", "frequency", "integrity",
+  "longevity", "ownership", "relevance", "scalability",
+  "scarcity", "security", "sensitivity", "timeliness",
+  "usability", "volume"
+)
+
+DVA <- list(
+  "accessibility", "accuracy", "clarity", "completeness",
+  "conciseness", "consistency", "documentation", "encryption",
+  "frequency", "integrity", "longevity", "objectivity",
+  "ownership", "precision", "relevance", "scalability",
+  "scarcity", "security", "sensitivity", "timeliness",
+  "usability", "validity", "volume"
+)
